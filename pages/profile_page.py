@@ -5,10 +5,10 @@ from pages.base_page import BasePageStellarBurgers
 
 class ProfilePage(BasePageStellarBurgers):
     def click_button_order_history(self):
-        self.click_to_element(ProfilePageLocators.BUTTON_ORDER_HISTORY_LINK)
+        self.move_to_element_and_click(ProfilePageLocators.BUTTON_ORDER_HISTORY_LINK)
         return self.current_url_page()
 
     def click_button_exit(self):
-        self.click_to_element(ProfilePageLocators.BUTTON_EXIT)
+        self.move_to_element_and_click(ProfilePageLocators.BUTTON_EXIT)
         self.find_element_with_wait(LoginPageLocators.TITLE_LOGIN)
         return self.current_url_page()

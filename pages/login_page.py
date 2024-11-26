@@ -4,7 +4,7 @@ from locators.login_page_locators import LoginPageLocators
 
 class LoginPage(BasePageStellarBurgers):
     def click_to_link_forgot_password(self):
-        self.click_to_element(LoginPageLocators.LINK_FORGOT_PASSWORD)
+        self.move_to_element_and_click(LoginPageLocators.LINK_FORGOT_PASSWORD)
 
     def go_to_forgot_password_page(self):
         self.click_to_link_forgot_password()
@@ -19,5 +19,5 @@ class LoginPage(BasePageStellarBurgers):
     def auth_user(self, email, password):
         self.set_email_field(email)
         self.set_password_field(password)
-        self.click_to_element(LoginPageLocators.BUTTON_INPUT)
+        self.move_to_element_and_click(LoginPageLocators.BUTTON_INPUT)
         return self.current_url_page()

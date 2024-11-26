@@ -8,7 +8,7 @@ class BasePageStellarBurgers:
         self.driver = driver
 
     def find_element_with_wait(self, locator):
-        WebDriverWait(self.driver, 5).until(
+        WebDriverWait(self.driver, 30).until(
             expected_conditions.visibility_of_element_located(
                 locator))
         return self.driver.find_element(*locator)
@@ -18,13 +18,12 @@ class BasePageStellarBurgers:
             expected_conditions.element_to_be_clickable(locator))
         self.driver.find_element(*locator).click()
 
-    def click_on_element_js(self, locator):
+    def move_to_element_and_click(self, locator):
         WebDriverWait(self.driver, 5).until(
             expected_conditions.element_to_be_clickable(locator))
-        self.driver.execute_script("arguments[0].click();", element)
-
-    def move_to_element_and_click(self, locator):
-        ActionChains(self.driver).move_to_element(*locator).click()
+        element = self.driver.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).click(element).perform()
 
     def text_from_element(self, locator):
         return self.find_element_with_wait(locator).text

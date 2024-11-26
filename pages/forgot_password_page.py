@@ -10,6 +10,6 @@ class ForgotPasswordPage(BasePageStellarBurgers):
 
     def enter_email_and_click_button_recover(self):
         self.enter_email_for_forgot_password()
-        self.click_to_element(ForgotPasswordPageLocators.BUTTON_FORGOT)
+        self.move_to_element_and_click(ForgotPasswordPageLocators.BUTTON_FORGOT)
         self.find_element_with_wait(ResetPasswordPageLocators.PLACEHOLDER_PASSWORD)
         return self.current_url_page()
