@@ -4,7 +4,8 @@ from selenium import webdriver
 
 from precondition.setup_order import OrderMethods
 from precondition.setup_user import AuthMethods
-from data import body_data_user, setup_ingredients
+from data import Data
+from helpers import body_data_user
 
 
 @allure.step("Подготовка driver")
@@ -44,7 +45,7 @@ def create_order(create_and_token_user):
     order = OrderMethods()
     response = order.create_order(
         headers=create_and_token_user[0],
-        params=setup_ingredients()
+        params=Data.PAYLOAD_INGREDIENTS
     )
     yield str(response.json()["order"]["number"])
 

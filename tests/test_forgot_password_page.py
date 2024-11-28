@@ -20,7 +20,9 @@ class TestForgotPassword:
     def test_restore_by_email(self, driver):
         driver.get(Data.URL_FORGOT_PASSWORD)
         forgot_password_page = ForgotPasswordPage(driver)
-        assert forgot_password_page.enter_email_and_click_button_recover() == Data.URL_RESET_PASSWORD
+        forgot_password_page.enter_email_and_click_button_recover()
+        reset_password_page = ResetPasswordPage(driver)
+        assert reset_password_page.find_element_placeholder_password() == Data.URL_RESET_PASSWORD
 
     @allure.title("Успешный клик по кнопке показать/скрыть пароль делает поле активны.")
     def test_field_password_active(self, driver):
